@@ -114,6 +114,6 @@ If you'd like to contribute to this project, please follow these steps:
 
 For any questions or feedback, please reach out to:
 
-- Email: yourname@example.com
+- Email: h.nyahoja@alustudent.com
 - GitHub: [1772hojaz](https://github.com/1772hojaz)
 
