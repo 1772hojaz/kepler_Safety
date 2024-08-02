@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+{% load widget_tweaks %}
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Login</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background: linear-gradient(to right, #b92b27, #1565c0);
+            
+            
+        }
+
+        .box {
+            background: #191919;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .box h1 {
+            color: white;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .box .form-control {
+            background: none;
+            border: 2px solid #3498db;
+            color: white;
+            border-radius: 24px;
+            margin-bottom: 20px;
+            padding: 10px;
+            text-align: center;
+            transition: all 0.25s ease;
+        }
+
+        .box .form-control:focus {
+            border-color: #2ecc71;
+            width: 100%;
+        }
+
+        .box input[type="submit"] {
+            background: #2ecc71;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 24px;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.25s ease;
+        }
+
+        .box input[type="submit"]:hover {
+            background: #27ae60;
+        }
+
+        .text-muted {
+            color: #aaa;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    {% include "ecom/navbar.html" %}
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form class="box" method="post">
+                    {% csrf_token %}
+                    <h1>Customer Login</h1>
+                    <p class="text-muted">Please enter your login and password!</p>
+
+                    {% render_field form.username class="form-control" placeholder="Username" %}
+                    {% render_field form.password class="form-control" placeholder="Password" %}
+
+                    <input type="submit" value="Login">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    {% include "ecom/footer.html" %}
+</body>
+</html>

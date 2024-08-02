@@ -1,0 +1,52 @@
+{% extends 'ecom/admin_base.html' %}
+{% load static %}
+{% block content %}
+
+<head>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    .alert {
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #f44336;
+      color: white;
+      border-radius: 5px;
+    }
+
+    .closebtn {
+      color: white;
+      font-weight: bold;
+      float: right;
+      font-size: 22px;
+      line-height: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .closebtn:hover {
+      color: black;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container mt-5">
+    <h2 class="text-center text-primary">Feedbacks By User</h2>
+    <hr>
+    {% for f in feedbacks %}
+    <div class="alert">
+      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+      <strong>{{ f.date }} || By: {{ f.name }}</strong><br> {{ f.feedback }}
+    </div>
+    {% endfor %}
+  </div>
+
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+</body>
+
+{% endblock content %}

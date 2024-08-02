@@ -1,0 +1,94 @@
+{% extends 'ecom/customer_base.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+  body {
+    background-color: #8c9eff;
+  }
+
+  .button {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #f4511e;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 28px;
+    padding: 15px 30px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 10px auto;
+  }
+
+  .button span {
+    cursor: pointer;
+    position: relative;
+    transition: 0.5s;
+  }
+
+  .button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+
+  .button:hover span {
+    padding-right: 25px;
+  }
+
+  .button:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
+
+  .profile-container {
+    text-align: center;
+    margin-top: 50px;
+  }
+
+  .profile-img {
+    max-width: 150px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+  }
+
+  .profile-info {
+    text-align: left;
+    margin-top: 20px;
+  }
+</style>
+
+<div class="container profile-container">
+  <div class="row justify-content-center">
+    <div class="col-md-4 text-center">
+      {% if customer.profile_pic %}
+        <img src="{% static customer.profile_pic.url %}" alt="profile pic" class="img-fluid profile-img" />
+      {% else %}
+        <img src="{% static 'images/defaltimage.png' %}" alt="Profile" class="img-fluid profile-img" />
+      {% endif %}
+    </div>
+    <div class="col-md-6 profile-info">
+      <blockquote>
+        <p>{{ request.user }}</p>
+        <small>
+          <cite title="Source Title">{{ customer.address }}
+            <i class="bi bi-geo-alt-fill"></i>
+          </cite>
+        </small>
+      </blockquote>
+      <p>
+        <i class="bi bi-telephone-fill"></i> {{ customer.mobile }}
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="text-center">
+  <a href="/edit-profile" class="btn btn-primary button"><span>Edit Profile </span></a>
+</div>
+
+{% endblock content %}

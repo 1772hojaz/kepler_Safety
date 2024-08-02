@@ -1,0 +1,82 @@
+{% extends 'ecom/homebase.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+  body {
+    background-color: #8c9eff;
+    font-family: 'Open Sans', serif;
+    font-size: 24px;
+
+
+  }
+  #muri{
+
+  }
+
+  .card {
+    border: none;
+    transition: transform 0.2s ease-in-out;
+  }
+
+
+
+  .card:hover {
+    transform: scale(1.05);
+  }
+
+  .card-img-top {
+    max-height: 300px;
+    object-fit: cover;
+  }
+
+  .price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #252525;
+  }
+
+  .add-to-cart {
+    font-size: 1rem;
+    text-transform: uppercase;
+  }
+</style>
+
+<div class="container my-5">
+  {% if products %}
+  <h3 class="text-center text-warning">{{ word }}</h3>
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mt-4">
+    {% for p in products %}
+    <div class="col">
+      <div class="card h-100 shadow-sm">
+        <img src="{% static p.product_image.url %}" class="card-img-top" alt="{{ p.name }}">
+        <div class="card-body">
+          <h4 class="card-title text-dark" id="muri"> <b>{{ p.name }}</b></h4>
+          <p class="card-text text-muted">{{ p.description }}</p>
+        </div>
+        <div class="card-footer d-flex justify-content-between align-items-center">
+          <span class="price">$ {{ p.price }}</span>
+          <a href="{% url 'add-to-cart' p.id %}" class="btn btn-primary add-to-cart">Add to cart</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <h3 class="text-center text-warning">No Search Found</h3>
+  {% endif %}
+</div>
+
+<script>
+  {% if messages %}
+  {% for message in messages %}
+  alert('{{ message }}');
+  {% endfor %}
+  {% endif %}
+</script>
+
+
+
+{% endblock content %}
